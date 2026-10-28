@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "logprint"
+version = "2.0.0"
+description = "Mirror print-style output to a UTF-8 log file"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE", "logprint/LICENSE.txt"]
+authors = [{name = "Julian Klein"}]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Repository = "https://github.com/morrdrix/logprint"
+Issues = "https://github.com/morrdrix/logprint/issues"
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9", "ruff>=0.9,<1", "build>=1,<2"]
+
+[tool.setuptools]
+package-dir = {"" = "logprint"}
+
+[tool.setuptools.packages.find]
+where = ["logprint"]
+include = ["logprint", "logprint.*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = ["error"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.format]
+line-ending = "lf"
